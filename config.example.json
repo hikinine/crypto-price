@@ -1,0 +1,19 @@
+{
+  "discordApiKey": [
+    ""
+  ],
+
+  "currencyIdDecode": [
+    "wanaka-farm"
+  ],
+
+  "currencyList": [
+    "usd",
+    "brl"
+  ],
+
+  "coinGeckoApiURL": "https://api.coingecko.com/api/v3/simple",
+
+  "requestIntervalInSeconds": 25
+
+}

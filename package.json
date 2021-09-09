@@ -1,0 +1,22 @@
+{
+  "name": "crypto-price",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "tsnd  ./index.ts",
+    "dev": "ts-node ./index.ts",
+    "debug": "tsnd --transpile-only --ignore-watch node_modules --respawn ./debug.ts",
+    "start": "tsnd --transpile-only --ignore-watch node_modules --respawn ./index.ts"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord.js": "^12.5.1",
+    "path": "^0.12.7",
+    "ts-node-dev": "^1.0.0-pre.56",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0"
+  }
+}
