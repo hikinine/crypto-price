@@ -35,8 +35,8 @@ export default  class PRICEBOT {
 
     return _.coinGeckoApiURL
       + "/price?ids="
-      + _.currencyIdDecode
-      + "&vs_currencies"
+      + token
+      + "&vs_currencies="
       + _.currencyList.join(",")
   }
 
