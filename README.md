@@ -2,6 +2,8 @@
 
 Discord bot that return price of currencys based on CoinGencko API.
 
+
+![Alt text](assets/demo.png?raw=true "Title")
 ## Setup
 
 
