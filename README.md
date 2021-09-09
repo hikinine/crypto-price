@@ -21,31 +21,13 @@ Create and edit your config.json (you can copy sample with below command)
 ```bash
 cp ./config.example.json ./config.json
 ```
-```json
-{
-  //Collection of Discord bot token key
-  "discordApiKey": [
-    "ENTER YOUR API KEY HERE"
-  ],
-
-  //Collection of cryptocurrencys (coingecko api reference)
-  "currencyIdDecode": [
-    "wanaka-farm"
-  ],
-  
-  //Collection of currencys
-  "currencyList": [
-    "usd",
-    "brl"
-  ],
-
-  //Do not change this
-  "coinGeckoApiURL": "https://api.coingecko.com/api/v3/simple",
-
-  //Interval to refresh price in seconds
-  "requestIntervalInSeconds": 25
-
-}
+Format
+```typescript
+discordApiKey: string[]  //Collection of Discord bot token key
+currencyIdDecode: string[] //Collection of cryptocurrencys (coingecko api reference)
+currencyList: string[] //Collection of currencys
+coinGeckoApiURL: string //Do not change this
+requestIntervalInSeconds: number //Interval to refresh price in seconds
 ```
 then just start your program.
 ```bash
