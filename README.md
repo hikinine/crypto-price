@@ -27,11 +27,14 @@ Format
 ```typescript
 discordApiKey: string[]  //Collection of Discord bot token key
 currencyIdDecode: string[] //Collection of cryptocurrencys (coingecko api reference)
-currencyList: string[] //Collection of currencys
+currencyList: string[] //Collection of currencys (usd,brl)
 coinGeckoApiURL: string //Do not change this
 requestIntervalInSeconds: number //Interval to refresh price in seconds
 ```
 then just start your program.
+
+make sure do you have one <b>discordApiKey</b> for each <b>currencyIdDecode</b>. 
+
 ```bash
 yarn start
 ```
