@@ -1,6 +1,6 @@
 # Crypto price
 
-Discord bot that return price of currencys based on CoinGencko API.
+Discord bot to return price of currencys based on CoinGencko API.
 
 
 ![Alt text](assets/demo.png?raw=true "Title")
@@ -35,3 +35,6 @@ then just start your program.
 ```bash
 yarn start
 ```
+
+## Personal Suggestion
+Make a role in your channel separated by another users and bot to fix on top prices (remember to give enough access to be seen in any text channel)
