@@ -15,7 +15,7 @@ git clone https://github.com/H9Solutions/crypto-price
 ```bash
 cd crypto-price && yarn install
 ```
-then, create a config.json based on example file.
+
 
 
 ## config.json

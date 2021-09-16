@@ -1,8 +1,6 @@
 import { Client } from "discord.js"
 import * as _ from "./config.json"
 import axios from "axios"
-import path from "path"
-
 export default  class PRICEBOT {
 
   private client: Client[] = []
@@ -26,7 +24,7 @@ export default  class PRICEBOT {
         && _.coinGeckoApiURL.includes("https")
         && _.currencyList.length > 0
         && typeof _.requestIntervalInSeconds === "number" 
-        && (_.requestIntervalInSeconds > 0)
+        && (_.requestIntervalInSeconds > 5)
     }
     catch(err) { return false }
   }
@@ -62,10 +60,11 @@ export default  class PRICEBOT {
 
         if (data[token]) {
          
-          bot.user.setActivity({
+          bot.user?.setActivity({
             name: this.buildDescriptionPrice(data[token]),
             type: "PLAYING",
           })
+        
         }
       })
       .catch(() => console.log("Failed to request endpoint: " + this.buildEndpointURL(token)))
@@ -78,6 +77,8 @@ export default  class PRICEBOT {
   }
 
   public init = () => {
+   
+
     this.client.map((bot, index) => {
 
       if (!this.isConfigRightFormated) {
@@ -89,7 +90,7 @@ export default  class PRICEBOT {
 
       bot.on("ready", async () => {
         console.log (_.currencyIdDecode[index] + " is running.")
-        bot.user.setAvatar(path.resolve("./assets/" + _.currencyIdDecode[index] + ".png"))
+  //      bot.user?.setAvatar(path.resolve("./assets/" + _.currencyIdDecode[index] + ".png"))
         this.setIntervalCurrencyPrice(bot, index)
       })
 
