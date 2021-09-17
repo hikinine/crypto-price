@@ -1,5 +1,5 @@
 import priceChecker from "./bot"
 
-//const price = new priceChecker()
-//price.init()
+const price = new priceChecker()
+price.init()
 
