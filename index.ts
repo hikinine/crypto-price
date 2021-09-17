@@ -41,9 +41,8 @@ import * as _ from "./config.json"
   }
   catch(err) { }
 
-  console.log(proxyList)
  
-  const price = new priceChecker(proxyList)
+  const price = new priceChecker(_.currencyIdDecode.join(","), proxyList)
   price.init()
 
 })()

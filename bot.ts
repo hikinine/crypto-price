@@ -11,26 +11,33 @@ interface ProxyResults {
   }
 }
 
-let proxyIndex = 0;
+interface ApiResponse {
+  [key: string]: {
+    brl: number, 
+    usd: number
+  }
+}
+
 export default  class PRICEBOT {
 
   private client: Client[] = []
   private requestIntervalInSeconds: number
   private isConfigRightFormated: boolean
+  private currencyIdDecode: string
   private proxyList: ProxyResults[] | undefined
+  private ApiResponse: ApiResponse | undefined
 
-
-  constructor (proxy?: ProxyResults[]) {
+  constructor (currencyIdDecode: string, proxy?: ProxyResults[]) {
 
     this.isConfigRightFormated = this.validateConfig()
     this.requestIntervalInSeconds = _.requestIntervalInSeconds * 1000
     _.discordApiKey.forEach(_ => this.client.push(new Client()))
-    
+
+    this.currencyIdDecode = currencyIdDecode
 
     if (proxy) {
       this.proxyList = proxy
     }
-     
   }
 
   private fp = (n: number): string => n.toFixed(2)
@@ -67,43 +74,52 @@ export default  class PRICEBOT {
     }
     return ""
   }
-  private fetchCurrency =(bot: Client, index: number) => {
 
-    const token = _.currencyIdDecode[index]
+  private fetchCurrency = (bot: Client, index: number) => {
 
-    const isProxySet = this.proxyList?.length ? {
-      proxy: {
-        ...this.proxyList[++proxyIndex % this.proxyList.length]
-      }
-    } : {}
-
+    const token = this.currencyIdDecode
+    /*
+      const isProxySet = this.proxyList?.length ? {
+        proxy: {
+          ...this.proxyList[++proxyIndex % this.proxyList.length]
+        }
+      } : {}
+    */
 
     axios
-      .get(this.buildEndpointURL(token), isProxySet)
+      .get(this.buildEndpointURL(token))
       .then((response) => response.data)
-      .then(async (data) => {
-
-        if (data[token]) {
-         
-          bot.user?.setActivity({
-            name: this.buildDescriptionPrice(data[token]),
-            type: "PLAYING",
-          })
-        
-        }
+      .then((data) => {
+        this.ApiResponse = data
       })
-       .catch(() => console.log("Failed to request endpoint: " + this.buildEndpointURL(token)))
+      .catch(() => console.log("Failed to request endpoint: " + this.buildEndpointURL(token)))
+
+
+  }
+
+  private _setActivity = (bot: Client, index: number) => {
+
+    const token = _.currencyIdDecode[index]
+         
+    bot.user?.setActivity({
+      name: this.buildDescriptionPrice(this.ApiResponse?.[token] || ""),
+      type: "PLAYING",
+    })        
+    
   }
   private setIntervalCurrencyPrice = (bot: Client, index: number) => {
     setInterval(() => 
       this.fetchCurrency(bot, index), 
       this.requestIntervalInSeconds
     )
+    setInterval(() => 
+      this._setActivity(bot, index), 
+      1000 * 15
+    )
   }
 
   public init = () => {
    
-
     this.client.map((bot, index) => {
 
       if (!this.isConfigRightFormated) {
@@ -115,12 +131,8 @@ export default  class PRICEBOT {
 
       bot.on("ready", async () => {
         console.log (_.currencyIdDecode[index] + " is running.")
-  //      bot.user?.setAvatar(path.resolve("./assets/" + _.currencyIdDecode[index] + ".png"))
         
-        setTimeout(() => {
-          this.setIntervalCurrencyPrice(bot, index)
-        }, Math.random() * 50 * 1000);
-        
+        this.setIntervalCurrencyPrice(bot, index)
       })
 
     })

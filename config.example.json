@@ -14,7 +14,7 @@
 
   "coinGeckoApiURL": "https://api.coingecko.com/api/v3/simple",
 
-  "requestIntervalInSeconds": 25,
+  "requestIntervalInSeconds": 10,
 
   "proxyApiKey": ""
 }
