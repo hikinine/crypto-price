@@ -77,6 +77,8 @@ export default  class PRICEBOT {
       }
     } : {}
 
+    console.log(token, isProxySet)
+
     axios
       .get(this.buildEndpointURL(token), isProxySet)
       .then((response) => response.data)

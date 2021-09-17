@@ -40,6 +40,8 @@ import * as _ from "./config.json"
     }
   }
   catch(err) { }
+
+  console.log(proxyList)
  
   const price = new priceChecker(proxyList)
   price.init()
