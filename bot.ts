@@ -63,14 +63,14 @@ export default  class PRICEBOT {
       + _.currencyList.join(",")
   }
 
-  private buildDescriptionPrice = (data: any): string => {
+  private buildDescriptionPrice = (brl?: number, usd?: number): string => {
     
     if (_.currencyList.length === 1) {
-      return `$${this.fp(data[_.currencyList[0]])}` 
+      return `$${this.fp(usd || 0)}` 
     }
     else if (_.currencyList.length >= 2 ) {
-      return `$${this.fp(data[_.currencyList[0]])}│` +
-        `R$ ${this.fp(data[_.currencyList[1]])}`
+      return `$${this.fp(usd || 0)}│` +
+        `R$ ${this.fp(brl || 0)}`
     }
     return ""
   }
@@ -102,7 +102,7 @@ export default  class PRICEBOT {
     const token = _.currencyIdDecode[index]
          
     bot.user?.setActivity({
-      name: this.buildDescriptionPrice(this.ApiResponse?.[token] || 0),
+      name: this.buildDescriptionPrice(this.ApiResponse?.[token].brl, this.ApiResponse?.[token].usd),
       type: "PLAYING",
     })        
     
