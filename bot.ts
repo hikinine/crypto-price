@@ -77,7 +77,6 @@ export default  class PRICEBOT {
       }
     } : {}
 
-    console.log(token, isProxySet)
 
     axios
       .get(this.buildEndpointURL(token), isProxySet)
@@ -93,7 +92,7 @@ export default  class PRICEBOT {
         
         }
       })
-      .catch(() => console.log("Failed to request endpoint: " + this.buildEndpointURL(token)))
+       .catch(() => console.log("Failed to request endpoint: " + this.buildEndpointURL(token)))
   }
   private setIntervalCurrencyPrice = (bot: Client, index: number) => {
     setInterval(() => 
