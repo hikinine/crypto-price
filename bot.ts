@@ -116,7 +116,11 @@ export default  class PRICEBOT {
       bot.on("ready", async () => {
         console.log (_.currencyIdDecode[index] + " is running.")
   //      bot.user?.setAvatar(path.resolve("./assets/" + _.currencyIdDecode[index] + ".png"))
-        this.setIntervalCurrencyPrice(bot, index)
+        
+        setTimeout(() => {
+          this.setIntervalCurrencyPrice(bot, index)
+        }, Math.random() * 50 * 1000);
+        
       })
 
     })
