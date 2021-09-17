@@ -102,7 +102,7 @@ export default  class PRICEBOT {
     const token = _.currencyIdDecode[index]
          
     bot.user?.setActivity({
-      name: this.buildDescriptionPrice(this.ApiResponse?.[token] || ""),
+      name: this.buildDescriptionPrice(this.ApiResponse?.[token] || 0),
       type: "PLAYING",
     })        
     
