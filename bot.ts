@@ -1,18 +1,36 @@
 import { Client } from "discord.js"
 import * as _ from "./config.json"
 import axios from "axios"
+
+interface ProxyResults {
+  host: string,
+  port: number,
+  auth: {
+    username: string 
+    password: string 
+  }
+}
+
+let proxyIndex = 0;
 export default  class PRICEBOT {
 
   private client: Client[] = []
   private requestIntervalInSeconds: number
   private isConfigRightFormated: boolean
+  private proxyList: ProxyResults[] | undefined
 
-  constructor () {
+
+  constructor (proxy?: ProxyResults[]) {
 
     this.isConfigRightFormated = this.validateConfig()
     this.requestIntervalInSeconds = _.requestIntervalInSeconds * 1000
     _.discordApiKey.forEach(_ => this.client.push(new Client()))
     
+
+    if (proxy) {
+      this.proxyList = proxy
+    }
+     
   }
 
   private fp = (n: number): string => n.toFixed(2)
@@ -53,8 +71,14 @@ export default  class PRICEBOT {
 
     const token = _.currencyIdDecode[index]
 
+    const isProxySet = this.proxyList?.length ? {
+      proxy: {
+        ...this.proxyList[++proxyIndex % this.proxyList.length]
+      }
+    } : {}
+
     axios
-      .get(this.buildEndpointURL(token))
+      .get(this.buildEndpointURL(token), isProxySet)
       .then((response) => response.data)
       .then(async (data) => {
 
