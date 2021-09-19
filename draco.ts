@@ -1,15 +1,15 @@
 import {Client} from "discord.js"
 import axios from "axios"
 
+import * as _ from "./config.json"
 
-const DISCORD_API_KEY = "ODg4OTQwMjYyMzk3NzE0NTE1.YUaAIg.brXtRtlMqzSrTQkG4OOg_qET7Cg"
 const API_URL = "https://api.mir4global.com/wallet/prices/draco/lastest"
 
 export default () => {
 
   const draco = new Client()
 
-  draco.login(DISCORD_API_KEY)
+  draco.login(_.DISCORD_KEY_DRACO)
 
   draco.on("ready", () => {
 
