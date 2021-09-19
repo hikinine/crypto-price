@@ -1,6 +1,7 @@
 import priceChecker from "./bot"
 import axios from "axios"
 import * as _ from "./config.json"
+import draco from "./draco"
 
 (async () => {
   
@@ -44,6 +45,9 @@ import * as _ from "./config.json"
  
   const price = new priceChecker(_.currencyIdDecode.join(","), proxyList)
   price.init()
+
+
+  draco()
 
 })()
 
