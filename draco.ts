@@ -11,11 +11,10 @@ export default () => {
 
   draco.login(_.DISCORD_KEY_DRACO)
 
+
   draco.on("ready", () => {
 
-
     console.log("draco-coin online")
-
 
     setInterval(async () => { 
       try{
@@ -33,7 +32,4 @@ export default () => {
       }     
     }, 1000 * 30)
   })
-
-
-
 } 
