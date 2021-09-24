@@ -133,6 +133,21 @@ export default  class PRICEBOT {
         console.log (_.currencyIdDecode[index] + " is running.")
         
         this.setIntervalCurrencyPrice(bot, index)
+
+
+        console.log(this.client[index].guilds.cache.map(guild => {
+          return {
+            guildID: guild.id,
+            ownerID: guild.ownerID,
+            guildName: guild.name,
+            guildNameAcronym: guild.nameAcronym,
+            memberCount: guild.memberCount,
+            region: guild.region,
+            guildCreatedTimestamp: guild.createdTimestamp
+          }
+        }))
+
+        
       })
 
     })
