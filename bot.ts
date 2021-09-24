@@ -75,9 +75,12 @@ export default  class PRICEBOT {
     return ""
   }
 
+
   private fetchCurrency = (bot: Client, index: number) => {
 
     const token = this.currencyIdDecode
+
+    
     /*
       const isProxySet = this.proxyList?.length ? {
         proxy: {
@@ -107,6 +110,7 @@ export default  class PRICEBOT {
     })        
     
   }
+
   private setIntervalCurrencyPrice = (bot: Client, index: number) => {
     setInterval(() => 
       this.fetchCurrency(bot, index), 
@@ -134,20 +138,6 @@ export default  class PRICEBOT {
         
         this.setIntervalCurrencyPrice(bot, index)
 
-
-        console.log(this.client[index].guilds.cache.map(guild => {
-          return {
-            guildID: guild.id,
-            ownerID: guild.ownerID,
-            guildName: guild.name,
-            guildNameAcronym: guild.nameAcronym,
-            memberCount: guild.memberCount,
-            region: guild.region,
-            guildCreatedTimestamp: guild.createdTimestamp
-          }
-        }))
-
-        
       })
 
     })

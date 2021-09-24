@@ -1,7 +1,6 @@
 import priceChecker from "./bot"
 import axios from "axios"
 import * as _ from "./config.json"
-import draco from "./draco"
 
 (async () => {
   
@@ -47,7 +46,6 @@ import draco from "./draco"
   price.init()
 
 
-  draco()
 
 })()
 

@@ -2,6 +2,7 @@
 
 Discord bot to return price of currencys based on CoinGencko API.
 
+add our bots in https://cryptoalarm.xyz/
 
 ![Alt text](assets/demo.png?raw=true "Title")
 ## Setup
@@ -42,3 +43,9 @@ yarn start
 
 ## Personal Suggestion
 Make a role in your channel separated by another users and bot to fix on top prices (remember to give enough access to be seen in any text channel)
+
+## Disclaim
+
+We do not monitor any messages or member personal information! 
+we only store public data such as servername, serverID, memberCount and region. 
+Data is all used to render our dashboard. 
