@@ -4,20 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "tsnd  ./index.ts",
-    "dev": "ts-node ./index.ts",
+    "dev": "ts-node ./src/index.ts",
+    "build": "tsc",
     "debug": "tsnd --transpile-only --ignore-watch node_modules --respawn ./debug.ts",
-    "start": "tsnd --transpile-only --ignore-watch node_modules --respawn ./index.ts"
+    "start": "yarn build && node ./dist/src/index.js"
   },
   "dependencies": {
-    "@types/node": "^16.9.1",
     "axios": "^0.21.1",
-    "discord.js": "^12.5.1",
-    "path": "^0.12.7",
-    "ts-node-dev": "^1.0.0-pre.56",
-    "typescript": "^3.9.7"
+    "discord.js": "^12.5.1"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0"
+    "@types/axios": "^0.14.0",
+    "@types/node": "^16.10.2",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
   }
 }

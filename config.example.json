@@ -16,5 +16,7 @@
 
   "requestIntervalInSeconds": 10,
 
-  "proxyApiKey": ""
+  "proxyApiKey": "",
+  
+  "proxyApiUrl": "https://proxy.webshare.io/api/proxy/list/?page=1"
 }

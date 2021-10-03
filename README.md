@@ -31,7 +31,8 @@ currencyIdDecode: string[] //Collection of cryptocurrencys (coingecko api refere
 currencyList: string[] //Collection of currencys (usd,brl)
 coinGeckoApiURL: string //Do not change this
 requestIntervalInSeconds: number //Interval to refresh price in seconds
-proxyApiKey?: string //proxyList https://proxy.webshare.io/userapi/keys
+proxyApiKey: string //proxyList https://proxy.webshare.io/userapi/keys,
+proxyApiUrl: string//https://proxy.webshare.io/userapi/keys
 ```
 then just start your program.
 
