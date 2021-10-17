@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules --respawn ./debug.ts",
-    "start": "tsnd --transpile-only --ignore-watch node_modules --respawn ./index.ts"
+    "start": "tsnd --transpile-only --ignore-watch node_modules --respawn ./debug.ts"
   },
   "dependencies": {
     "@discordjs/rest": "^0.1.0-canary.0",
