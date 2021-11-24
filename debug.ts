@@ -1,4 +1,4 @@
-import {TokenPrice} from "./src/pancakeswap.api"
+import {TokenPrice} from "./src/apeswap.api"
 
 ;(async() => {
 
@@ -6,10 +6,10 @@ import {TokenPrice} from "./src/pancakeswap.api"
     network: "bscscan"
   })
 
-  Token.getPrice("0x1228fb5ef4c98cabd696ba1bd4819e050389d21a")
+  Token.getPrice("0xcf2D2CE89AeD0073540C497fcF894Ea22d37C7aF")
     .then(console.log)
     .catch(console.log)
-  Token.getPriceBNBBased("0x1228fb5ef4c98cabd696ba1bd4819e050389d21a")
+  Token.getPriceBNBBased("0xcf2D2CE89AeD0073540C497fcF894Ea22d37C7aF")
     .then(console.log)
     .catch(console.log)
 })()
